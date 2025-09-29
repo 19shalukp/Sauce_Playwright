@@ -8,7 +8,7 @@
     "requireModule": ["ts-node/register"],
     "format": [
       "progress",
-      "json:reports/cucumber-report.json",
+      "json:reports/cucumber-json/cucumber-report.json",
       "allure-cucumberjs/reporter"
     ],
     "formatOptions": {
