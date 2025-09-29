@@ -23,6 +23,6 @@ jobs:
       - name: Run functional tests
         run: npm run test-functional
       - name: Run regression tests
-        run: npm run test-regression-deafult
+        run: npm run test-regression-default
       - name: Generate report
         run: npm run generate-report

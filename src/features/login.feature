@@ -3,7 +3,7 @@ Feature: Login feature
   Background:   
     Given the user navigate to the login page
 
-  Scenario: Unsuccessful login with invalid credentials
+  Scenario: Unsuccessful login with invalid credentials.
     When the user enters credentials as "locked_out_user" and "secret_sauce" and click login button
     Then an error message should be displayed
     

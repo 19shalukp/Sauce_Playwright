@@ -5,7 +5,7 @@
   "scripts": {
     "test-user-flow": "npx cucumber-js --tags \"@E2EUserFlow\"",
     "test-functional": "npx cucumber-js --tags \"@Functional\"",
-    "test-regression-deafult": "npx cucumber-js",
+    "test-regression-default": "npx cucumber-js",
     "generate-report": "node generateReport.js"
   },
   "keywords": [],
