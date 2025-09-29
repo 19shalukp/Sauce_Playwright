@@ -1,0 +1,14 @@
+{
+  "baseURL": "https://www.saucedemo.com/",
+  "browser": "chromium",
+  "credentials": {
+    "_comment": "Standard user credentials ONLY for generating login state",
+    "username": "standard_user",
+    "password": "secret_sauce"
+  },
+  "inventoryPageURL": "https://www.saucedemo.com/inventory.html",
+  "cartPageURL": "https://www.saucedemo.com/cart.html",
+  "checkoutPageOneURL": "https://www.saucedemo.com/checkout-step-one.html",
+  "checkoutPageTwoURL": "https://www.saucedemo.com/checkout-step-two.html"
+}
+
