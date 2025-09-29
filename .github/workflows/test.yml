@@ -24,6 +24,7 @@ jobs:
       - name: Install dependencies
         run: npm install
 
+   
       - name: Run E2E user flow tests
         run: npm run test-user-flow || true
 
@@ -33,11 +34,30 @@ jobs:
       - name: Run regression tests
         run: npm run test-regression-default || true
 
-      - name: Generate report
-        run: npm run generate-html-report
+    
+      - name: Check reports folder
+        run: ls -R reports || echo "⚠️ reports folder missing"
 
-      - name: Upload test report
+      - name: Check Allure results
+        run: ls -R reports/allure-results || echo "⚠️ allure-results folder missing or empty"
+
+  
+      - name: Install Allure CLI
+        run: npm install -g allure-commandline
+
+ 
+      - name: Generate Allure report
+        run: allure generate reports/allure-results --clean -o reports/allure-report || echo "⚠️ Allure report generation failed"
+
+
+      - name: Upload Cucumber HTML report
         uses: actions/upload-artifact@v4
         with:
-          name: test-report
-          path: reports/
+          name: cucumber-html-report
+          path: reports/cucumber-report.html
+
+      - name: Upload Allure report
+        uses: actions/upload-artifact@v4
+        with:
+          name: allure-report
+          path: reports/allure-report
