@@ -1,7 +1,12 @@
 # Sauce_Playwright
-Sauce web testing
-To see the report, download both allure report and allure results in one directory and run the command "allure open allure-report" from that directory. The html will 
-show as loading if you try to open the html file directly or from an incorrect directory or if you keep the allure-results and allure-report in separate directories.
+To see the report generated from Github actions, download both allure report and allure results ( from Summary tab --> artifacts) in one directory 
+and run the command "allure open allure-report" from that directory. The html will show as loading if you try to open the html file directly or from an incorrect directory or if you keep the allure-results and 
+allure-report in separate directories.
+
+To see the report, if you run locally, run the commands from the root directory of the project.
+"npm run test-regression-default"
+"allure generate reports/allure-results --clean"
+"allure open"
 
 State of login is used only for sort and product features as we are not testing the login feature for sort/product feature files.
 
