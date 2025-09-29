@@ -48,11 +48,6 @@ jobs:
       # ----------------------------
       # Upload Reports as Artifacts
       # ----------------------------
-      - name: Upload Cucumber HTML report
-        uses: actions/upload-artifact@v4
-        with:
-          name: cucumber-html-report
-          path: reports/cucumber-report.html
 
       - name: Upload Allure results
         uses: actions/upload-artifact@v4
