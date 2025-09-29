@@ -3,10 +3,8 @@
   "version": "1.0.0",
   "main": "index.js",
   "scripts": {
-    "test-user-flow": "npx cucumber-js --tags \"@E2EUserFlow\" --format allure-cucumberjs/reporter --format-options '{\"resultsDir\": \"reports/allure-results\"}'",
-    "generate-html-report": "node generateReport.js",
-    "test-functional": "npx cucumber-js --tags \"@Functional\" --format allure-cucumberjs/reporter --format-options '{\"resultsDir\": \"reports/allure-results\"}'",
-    "test-regression-default": "npx cucumber-js --format allure-cucumberjs/reporter --format-options '{\"resultsDir\": \"reports/allure-results\"}'"
+    "test-regression-default": "npx cucumber-js --format allure-cucumberjs/reporter --format-options '{\"resultsDir\": \"reports/allure-results\"}'",
+    "generate-html-report": "node generateReport.js"
   },
   "keywords": [],
   "author": "",
