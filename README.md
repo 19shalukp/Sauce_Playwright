@@ -5,8 +5,8 @@ allure-report in separate directories.
 
 To see the report, if you run locally, run the commands from the root directory of the project.
 "npm run test-regression-default"
-"allure generate reports/allure-results --clean"
-"allure open"
+"allure generate reports/allure-results --clean -o reports/allure-report"
+"allure open reports/allure-report"
 
 State of login is used only for sort and product features as we are not testing the login feature for sort/product feature files.
 
