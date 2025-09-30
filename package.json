@@ -3,7 +3,7 @@
   "version": "1.0.0",
   "main": "index.js",
   "scripts": {
-    "test-regression-default": "npx cucumber-js \"src/features/**/*.feature\" --parallel 4 --format allure-cucumberjs/reporter --format-options '{\"resultsDir\": \"reports/allure-results\"}'",
+    "test-regression-default": "npx cucumber-js \"src/features/**/*.feature\" --format allure-cucumberjs/reporter --format-options '{\"resultsDir\": \"reports/allure-results\"}'",
     "generate-allure-report": "allure generate reports/allure-results --clean -o reports/allure-report"
   },
   "keywords": [],
