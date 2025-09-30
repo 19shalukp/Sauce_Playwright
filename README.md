@@ -17,3 +17,4 @@ Few issues I came across are-
  - There is a data breach pop up shown with every login, I am just handling it to proceed with the scenarios under test
 
 There are more tests that could be added however I added the tests that I could finish within the time constraints.
+Failures shown in the report are expected ones.

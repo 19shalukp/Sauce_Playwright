@@ -13,9 +13,6 @@ jobs:
     steps:
       - uses: actions/checkout@v4
 
-      - name: List project files
-        run: ls -R
-
       - name: Set up Node.js
         uses: actions/setup-node@v4
         with:
@@ -43,7 +40,9 @@ jobs:
       # Generate HTML report (Cucumber/Allure)
       # ----------------------------
       - name: Generate HTML report
-        run: npm run generate-html-report || echo "⚠️ report generation failed"
+        run: |
+          npx allure generate reports/allure-results --clean -o reports/allure-report
+          ls -R reports/allure-report
 
       # ----------------------------
       # Upload Reports as Artifacts
