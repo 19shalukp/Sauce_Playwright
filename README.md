@@ -1,6 +1,8 @@
 # Sauce_Playwright
-To see the report generated from Github actions, download both allure report and allure results ( from Summary tab --> artifacts) in one directory 
-and run the command "allure open allure-report" from that directory. The html will show as loading if you try to open the html file directly or from an incorrect directory or if you keep the allure-results and 
+To see the report generated from Github actions, 
+download both allure report and allure results ( from Summary tab --> artifacts) in one directory 
+Run the command "allure open allure-report" from that directory. 
+The html will show as loading if you try to open the html file directly or from an incorrect directory or if you keep the allure-results and 
 allure-report in separate directories.
 
 To see the report, if you run locally, run the commands from the root directory of the project.
