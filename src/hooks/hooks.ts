@@ -56,17 +56,23 @@ Before (async function() {
 
 });
 
-After(async function (scenario  ) { 
-   
-    if (scenario.result && scenario.result.status === 'FAILED')  {
-        await this.page.screenshot({ path: `screenshots/${scenario.pickle.name}.png` });
+After(async function (scenario  ) {
+try {
+    if (scenario.result && scenario.result.status === 'FAILED' && this.page) {
+        await this.page.screenshot({path: `screenshots/${scenario.pickle.name}.png`});
         const screenshot = await this.page.screenshot();
-        this.attach(screenshot, 'image/png')
+        const screenshotBuffer = await this.page.screenshot();
+        this.attach(screenshotBuffer, 'image/png');
     }
-    await this.context.tracing.stop({ path: `traces/${scenario.pickle.name}.zip` });
-    await this.page.close();
-    await this.context.close();
-    await this.browser.close();
+    if (this.context) {
+        await this.context.tracing.stop({path: `traces/${scenario.pickle.name}.zip`});
+    }
+    if (this.page) await this.page.close();
+    if (this.context) await this.context.close();
+    if (this.browser) await this.browser.close();
+}catch(err){
+    console.warn(`After hook failed for scenario ${scenario.pickle.name}:`);
+}
 });
 
 //To delete the login storage state file after all tests are done
