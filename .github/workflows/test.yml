@@ -40,7 +40,7 @@ jobs:
       # Generate HTML report (Cucumber/Allure)
       # ----------------------------
       - name: Generate HTML report
-        run: npm run generate-allure-report
+        run: npx allure generate reports/allure-results --clean -o reports/allure-report
       # ----------------------------
       # Upload Reports as Artifacts
       # ----------------------------
