@@ -32,17 +32,18 @@ Before (async function() {
     if (fs.existsSync(loginStorageStatePath)) {
         contextOptions.storageState = loginStorageStatePath;    
     }
-    
+
+    const isCI = !!process.env.GITHUB_ACTIONS;
     let browserInstance: Browser;
     switch (config.browser.toLowerCase()) {
         case 'chromium':
-            browserInstance = await chromium.launch({ headless: false });
+            browserInstance = await chromium.launch({ headless: isCI });
             break;
         case 'firefox':
-            browserInstance = await firefox.launch({ headless: false });
+            browserInstance = await firefox.launch({ headless: isCI });
             break;
         case 'webkit':
-            browserInstance = await webkit.launch({ headless: false });
+            browserInstance = await webkit.launch({ headless: isCI });
             break;
         default:
             throw new Error(`Unsupported browser: ${config.browser}`);
@@ -59,10 +60,8 @@ Before (async function() {
 After(async function (scenario  ) {
 try {
     if (scenario.result && scenario.result.status === 'FAILED' && this.page) {
-        await this.page.screenshot({path: `screenshots/${scenario.pickle.name}.png`});
-        const screenshot = await this.page.screenshot();
-        const screenshotBuffer = await this.page.screenshot();
-        this.attach(screenshotBuffer, 'image/png');
+        const screenshot= await this.page.screenshot({path: `screenshots/${scenario.pickle.name}.png`});
+        this.attach(screenshot, 'image/png');
     }
     if (this.context) {
         await this.context.tracing.stop({path: `traces/${scenario.pickle.name}.zip`});
