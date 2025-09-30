@@ -9,23 +9,32 @@ import * as fs from 'fs';
 const loginStorageStatePath: string = path.join(process.cwd(), 'src/artifacts/loginState.json');
 
 BeforeAll(function () {
+    try{
     const screenshotsDir = path.join(process.cwd(), 'screenshots');
     if (fs.existsSync(screenshotsDir)) {
         for (const file of fs.readdirSync(screenshotsDir)) {
             fs.unlinkSync(path.join(screenshotsDir, file));
         }
     }
+    } catch (err) {
+        console.error("Error in Before All hook:", err);
+    }
 });
 
 //Save login state for the features requiring login as a prerequisite
 Before({ tags: '@sort or @ProductCheckout' }, async function () {
+    try{
     const fs = require('fs');
     if (!fs.existsSync(loginStorageStatePath)) {
         await saveLoginState(config.credentials.username, config.credentials.password);
     }
+    } catch (err) {
+        console.error("Error in Before hook with tags:", err);
+    }
 });
 
 Before (async function() {
+    try {
     let contextOptions: BrowserContextOptions = {};
     
     //if storage path exists, add that into the context options
@@ -54,6 +63,9 @@ Before (async function() {
     this.poManager= new POManager(this.page,this.context);
     await this.context.grantPermissions([], { origin: config.baseURL}); // to handle error popup
     await this.context.tracing.start({ screenshots: true, snapshots: true });
+    } catch (err) {
+        console.error("Error in Before hook:", err);
+    }
 
 });
 
@@ -70,7 +82,7 @@ try {
     if (this.context) await this.context.close();
     if (this.browser) await this.browser.close();
 }catch(err){
-    console.warn(`After hook failed for scenario ${scenario.pickle.name}:`);
+    console.warn(`After hook failed for scenario ${scenario.pickle.name}:`,err);
 }
 });
 
