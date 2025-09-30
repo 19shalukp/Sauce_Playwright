@@ -3,7 +3,7 @@
   "version": "1.0.0",
   "main": "index.js",
   "scripts": {
-    "test-regression-default": "npx cucumber-js \"src/features/**/*.feature\" --format allure-cucumberjs/reporter --format-options '{\"resultsDir\": \"reports/allure-results\"}'",
+    "test-regression-default": "npx cucumber-js \"src/features/**/*.feature\" --parallel 4 --format allure-cucumberjs/reporter --format-options '{\"resultsDir\": \"reports/allure-results\"}'",
     "generate-allure-report": "allure generate reports/allure-results --clean -o reports/allure-report"
   },
   "keywords": [],
@@ -14,9 +14,13 @@
     "@cucumber/cucumber": "^12.2.0",
     "@playwright/test": "^1.55.1",
     "@types/node": "^24.5.2",
+    "allure-commandline": "^2.34.1",
     "allure-cucumberjs": "^3.4.1",
     "cucumber-html-reporter": "^7.2.0",
     "ts-node": "^10.9.2",
     "typescript": "^5.9.2"
+  },
+  "engines": {
+    "node": ">=20.0.0"
   }
 }
